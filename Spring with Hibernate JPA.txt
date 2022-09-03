@@ -1,0 +1,10 @@
+Master Spring Data JPA with Hibernate/JPA:
+******************************************
+1. 4 Types of Primary key Generation Strategies - AUTO, IDENTITY, SEQUENCE, and TABLE
+2. Spring Data JPA Repository Methods (CRUD Operations)
+3. Create JPQL and Native SQL Queries Using @Query Annotation
+4. How to Implement Pagination and Sorting Using Spring Data JPA
+5. JPA Cascade Types and Fetch Types (EAGER and LAZY)
+6. Transaction Management with Spring Data JPA and Spring Boot
+
+PROJECT: (Build Domain Model Relationships for E-Commerce Project Using Hibernate ORM)
