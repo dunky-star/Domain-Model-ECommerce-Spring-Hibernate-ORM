@@ -1,1 +1,1 @@
-# Domain-Model-ECommerce-Using-Hibernate-ORM
+# Build Domain Model E-Commerce Using Spring JPA & Hibernate ORM.
