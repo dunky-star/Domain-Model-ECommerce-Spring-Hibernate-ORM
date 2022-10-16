@@ -19,7 +19,7 @@ class ProductRepositoryTest {
         Product product = new Product();
         product.setName("Sneaker shoe");
         product.setDescription("Best sneaker in the market");
-        product.setSku("200ABC");
+        product.setSku("300ABCG");
         product.setPrice(new BigDecimal(300));
         product.setActive(true);
         product.setImageUrl("/home/sneaker.png");
@@ -59,7 +59,7 @@ class ProductRepositoryTest {
         Product product2 = new Product();
         product2.setName("Adidas red shoe");
         product2.setDescription("Best red Adidas in Kampala");
-        product2.setSku("500ABCDE");
+        product2.setSku("700ABCDE");
         product2.setPrice(new BigDecimal(600));
         product2.setActive(true);
         product2.setImageUrl("/home/adidas3.png");
@@ -68,7 +68,7 @@ class ProductRepositoryTest {
         Product product3 = new Product();
         product3.setName("Converse shoe - red");
         product3.setDescription("Best red Converse in the market");
-        product3.setSku("500ABCE");
+        product3.setSku("800ABCD");
         product3.setPrice(new BigDecimal(800));
         product3.setActive(true);
         product3.setImageUrl("/home/converse3.png");
@@ -89,5 +89,26 @@ class ProductRepositoryTest {
     void deleteByIdMethod(){
         Long id = 7L;
         productRepository.deleteById(id);
+    }
+
+    @Test
+    void deleteMethod(){
+        // Find an entity by Id
+        Long id = 6L;
+        Product product = productRepository.findById(id).get();
+        // delete (entity)
+        productRepository.delete(product);
+    }
+
+    @Test
+    void deleteAllMethod(){
+        productRepository.deleteAll();
+    }
+
+    @Test
+    void existByIdMethod(){
+        Long id = 13L;
+        boolean result = productRepository.existsById(id);
+        System.out.println(result);
     }
 }
