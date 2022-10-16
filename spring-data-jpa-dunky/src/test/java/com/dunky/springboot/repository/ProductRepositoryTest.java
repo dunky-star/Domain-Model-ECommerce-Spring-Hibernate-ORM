@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @SpringBootTest
 class ProductRepositoryTest {
@@ -42,5 +43,51 @@ class ProductRepositoryTest {
 
         // save updated entity
         productRepository.save(product);
+    }
+
+    @Test
+    void findByIdMethod(){
+        // find or retrieve an entity by id
+        Long id = 1L;
+        Product product = productRepository.findById(id).get();
+
+    }
+
+    @Test
+    void saveAllMethod(){
+        // Create product
+        Product product2 = new Product();
+        product2.setName("Adidas red shoe");
+        product2.setDescription("Best red Adidas in Kampala");
+        product2.setSku("500ABCDE");
+        product2.setPrice(new BigDecimal(600));
+        product2.setActive(true);
+        product2.setImageUrl("/home/adidas3.png");
+
+        // Create product
+        Product product3 = new Product();
+        product3.setName("Converse shoe - red");
+        product3.setDescription("Best red Converse in the market");
+        product3.setSku("500ABCE");
+        product3.setPrice(new BigDecimal(800));
+        product3.setActive(true);
+        product3.setImageUrl("/home/converse3.png");
+
+        productRepository.saveAll(List.of(product2, product3));
+
+    }
+
+    @Test
+    void findAllMethod(){
+        List<Product> products = productRepository.findAll();
+        products.forEach((p) -> {
+            System.out.println(p.getName());
+        });
+    }
+
+    @Test
+    void deleteByIdMethod(){
+        Long id = 7L;
+        productRepository.deleteById(id);
     }
 }
