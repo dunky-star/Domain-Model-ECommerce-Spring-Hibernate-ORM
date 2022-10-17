@@ -3,6 +3,7 @@ package com.dunky.springboot.repository;
 import com.dunky.springboot.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +23,18 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
     /**
-     * Returns the found list of product entries whose title or description is given
+     * Returns the found list of product entries whose name or description is given
      * as a method parameter.
      * If no product entries is found, this method returns an empty list.
      */
-    List<Product> findByNameOrDescription (String name, String Description);
+    public List<Product> findByNameOrDescription (String name, String Description);
+
+    /**
+     * Returns the found list of product entries whose name and description is given
+     * as a method parameter.
+     * If no product entries is found, this method returns an empty list.
+     */
+    public List<Product> findByNameAndDescriptionAndPrice (String name, String Description, BigDecimal price);
+
 
 }

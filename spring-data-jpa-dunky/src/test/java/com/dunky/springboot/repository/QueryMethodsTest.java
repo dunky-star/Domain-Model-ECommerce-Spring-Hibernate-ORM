@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @SpringBootTest
@@ -33,5 +34,14 @@ public class QueryMethodsTest {
         products.forEach((p) -> {System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
                 "\nProduct description: " + p.getDescription());});
     }
+
+    @Test
+    void findByNameAndDescriptionAndPriceMethod(){
+        List<Product>  products = productRepository.findByNameAndDescriptionAndPrice("Converse shoe - red",
+                "Best red Converse in the market", BigDecimal.valueOf(800.00));
+        products.forEach((p) -> {System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
+                "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice());});
+    }
+
  }
 
