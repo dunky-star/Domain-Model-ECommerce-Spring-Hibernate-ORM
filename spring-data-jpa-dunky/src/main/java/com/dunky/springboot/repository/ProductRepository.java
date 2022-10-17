@@ -84,8 +84,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * Define Native SQL queries using @Query annotation with named parameters.
      *
      */
-    @Query(value = "SELECT * FROM Product p WHERE p.name = :name" +
-            "or p.description = :description", nativeQuery = true)
+    @Query(value = "SELECT * FROM products p WHERE p.name = :name OR p.description = :description", nativeQuery = true)
     public Product findByNameOrDescriptionSQLNamedParam (@Param("name") String name,
                                                           @Param("description") String description);
 }
