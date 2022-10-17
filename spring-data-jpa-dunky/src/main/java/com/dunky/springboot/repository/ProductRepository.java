@@ -2,6 +2,8 @@ package com.dunky.springboot.repository;
 
 import com.dunky.springboot.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -69,4 +71,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     public List<Product> findByDateCreatedBetween (LocalDateTime startDate, LocalDateTime endDate);
 
     public List<Product> findFirst3ByOrderByNameAsc();
+
+    /**
+     * Define JPQL queries using @Query annotation with named parameters.
+     *
+     */
+    @Query("SELECT p FROM Product p WHERE p.name = :name or p.description = :description")
+    public Product findByNameOrDescriptionJPQLNamedParam (@Param("name") String name,
+                                                          @Param("description") String description);
 }
