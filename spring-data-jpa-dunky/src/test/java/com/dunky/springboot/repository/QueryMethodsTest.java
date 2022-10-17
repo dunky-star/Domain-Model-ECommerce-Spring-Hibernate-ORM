@@ -12,7 +12,7 @@ public class QueryMethodsTest {
 
     @Test
     void findByNameMethod (){
-        Product product = productRepository.findByName("Adidas red shoe");
+        Product product = productRepository.findByName("Converse shoe");
         System.out.println("Product ID: " + product.getId() + "\nProduct name: " + product.getName() +
                 "\nProduct description: " + product.getDescription());
     }
