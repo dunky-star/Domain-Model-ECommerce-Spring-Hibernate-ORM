@@ -18,4 +18,13 @@ public class JPQLQueriesTest {
         System.out.println("Product ID: " + product.getId() + "\nProduct name: " + product.getName() +
                 "\nProduct description: " + product.getDescription());
     }
+
+    @Test
+    void findByNameOrDescriptionSQLNamedParamMethod(){
+        Product product = productRepository.findByNameOrDescriptionSQLNamedParam
+                ("New Orlean Sneaker", "Best of class sneaker");
+
+        System.out.println("Product ID: " + product.getId() + "\nProduct name: " + product.getName() +
+                "\nProduct description: " + product.getDescription());
+    }
 }
