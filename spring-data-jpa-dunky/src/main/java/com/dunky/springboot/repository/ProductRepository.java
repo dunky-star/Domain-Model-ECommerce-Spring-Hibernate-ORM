@@ -67,4 +67,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      *
      */
     public List<Product> findByDateCreatedBetween (LocalDateTime startDate, LocalDateTime endDate);
+
+    public List<Product> findFirst3ByOrderByNameAsc();
 }

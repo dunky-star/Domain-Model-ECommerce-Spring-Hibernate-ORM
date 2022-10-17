@@ -53,7 +53,7 @@ public class QueryMethodsTest {
 
     @Test
     void findByNameContainingMethod(){
-        List<Product>  products = productRepository.findByNameContaining("Adidas shoe");
+        List<Product>  products = productRepository.findByNameContaining("Adidas");
         products.forEach((p)->{
             System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
                     "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice() + " \n");
@@ -86,6 +86,16 @@ public class QueryMethodsTest {
         // End date
         LocalDateTime endDate = LocalDateTime.of(2022, 10, 16, 12, 18, 03 );
         List<Product>  products = productRepository.findByDateCreatedBetween(startDate, endDate);
+
+        products.forEach((p)->{
+            System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
+                    "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice() + " \n");
+        });
+    }
+
+    @Test
+    void findFirst3ByOrderByNameAscMethod(){
+        List<Product>  products = productRepository.findFirst3ByOrderByNameAsc();
 
         products.forEach((p)->{
             System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
