@@ -36,5 +36,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
     public List<Product> findByNameAndDescriptionAndPrice (String name, String Description, BigDecimal price);
 
-
+    /**
+     * Returns the distinct product entry entries whose name is given
+     * as a method parameter.
+     * If no product entries is found, this method returns null.
+     */
+    public List<Product> findByPriceGreaterThan (BigDecimal price);
 }

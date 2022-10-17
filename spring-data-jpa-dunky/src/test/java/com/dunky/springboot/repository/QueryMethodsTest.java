@@ -40,7 +40,14 @@ public class QueryMethodsTest {
         List<Product>  products = productRepository.findByNameAndDescriptionAndPrice("Converse shoe - red",
                 "Best red Converse in the market", BigDecimal.valueOf(800.00));
         products.forEach((p) -> {System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
-                "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice());});
+                "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice() + " \n");});
+    }
+
+    @Test
+    void findByPriceGreaterThanMethod(){
+        List<Product>  products = productRepository.findByPriceGreaterThan(BigDecimal.valueOf(200));
+        products.forEach((p) -> {System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
+                "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice() + " \n");});
     }
 
  }
