@@ -4,6 +4,7 @@ import com.dunky.springboot.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,4 +43,28 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * If no product entries is found, this method returns null.
      */
     public List<Product> findByPriceGreaterThan (BigDecimal price);
+
+    /**
+     * Returns the filtered product records that match
+     * the given text.
+     */
+    public List<Product> findByNameContaining (String name);
+
+    /**
+     * Returns the product based on SQL LIKE condition
+     * the given text.
+     */
+    public List<Product> findByNameLike (String name);
+
+    /**
+     * Returns the product whose price BETWEEN startPrice AND endPrice.
+     *
+     */
+    public List<Product> findByPriceBetween (BigDecimal startPrice, BigDecimal endPrice);
+
+    /**
+     * Returns the products whose creation date lies BETWEEN startDate AND endDate.
+     *
+     */
+    public List<Product> findByDateCreatedBetween (LocalDateTime startDate, LocalDateTime endDate);
 }
