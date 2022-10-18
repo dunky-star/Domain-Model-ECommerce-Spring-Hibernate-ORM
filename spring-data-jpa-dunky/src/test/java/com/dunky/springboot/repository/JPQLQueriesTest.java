@@ -27,4 +27,6 @@ public class JPQLQueriesTest {
         System.out.println("Product ID: " + product.getId() + "\nProduct name: " + product.getName() +
                 "\nProduct description: " + product.getDescription());
     }
+
+
 }

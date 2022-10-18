@@ -15,6 +15,11 @@ import java.time.LocalDateTime;
 @ToString
 
 @Entity  // To specify this class as JPA entity.
+@NamedNativeQuery(
+        name="Product.findByDescription",
+        query = "SELECT * FROM products p WHERE p.description = :description LIMIT 5",
+        resultClass=Product.class
+)
 @Table(
         name = "products",
         schema = "ecommercespringdatajpa",
