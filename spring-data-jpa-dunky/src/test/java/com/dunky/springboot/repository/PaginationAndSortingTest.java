@@ -33,5 +33,30 @@ public class PaginationAndSortingTest {
             System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
                     "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice() + " \n");
         });
+
+        // Total pages
+        int totalPages = page.getTotalPages();
+
+        // Total element
+        long totalElements = page.getTotalElements();
+
+        // Number of elements
+        int numberOfElements = page.getNumberOfElements();
+
+        // Size
+        int size = page.getSize();
+
+        // Last
+        boolean isLast = page.isLast();
+
+        // First
+        boolean isFirst = page.isFirst();
+
+        System.out.println("Total page -> " + totalPages);
+        System.out.println("Total elements -> " + totalElements);
+        System.out.println("Number of elements -> " + numberOfElements);
+        System.out.println("Page size -> " + size);
+        System.out.println("is last page? -> " + isLast);
+        System.out.println("is first page? -> " + isFirst);
     }
 }
