@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -58,5 +59,15 @@ public class PaginationAndSortingTest {
         System.out.println("Page size -> " + size);
         System.out.println("is last page? -> " + isLast);
         System.out.println("is first page? -> " + isFirst);
+    }
+
+    @Test
+    void sorting(){
+        // Sorting implemented
+        String sortBy = "price";
+        List<Product> products = productRepository.findAll(Sort.by(sortBy).descending());
+        products.forEach((p) -> {
+            System.out.println("product: " + p.getName() + " -> Price: " + p.getPrice());
+        });
     }
 }

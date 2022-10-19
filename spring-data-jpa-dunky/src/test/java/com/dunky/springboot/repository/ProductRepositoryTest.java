@@ -4,6 +4,7 @@ import com.dunky.springboot.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -79,9 +80,11 @@ class ProductRepositoryTest {
 
     @Test
     void findAllMethod(){
-        List<Product> products = productRepository.findAll();
+        // Sorting implemented
+        String sortBy = "price";
+        List<Product> products = productRepository.findAll(Sort.by(sortBy).descending());
         products.forEach((p) -> {
-            System.out.println(p.getName());
+            System.out.println("product: " + p.getName() + " -> Price: " + p.getPrice());
         });
     }
 
