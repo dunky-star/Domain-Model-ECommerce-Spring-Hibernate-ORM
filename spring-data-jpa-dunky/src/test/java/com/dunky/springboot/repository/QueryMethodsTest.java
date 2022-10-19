@@ -53,7 +53,7 @@ public class QueryMethodsTest {
 
     @Test
     void findByNameContainingMethod(){
-        List<Product>  products = productRepository.findByNameContaining("Adidas");
+        List<Product>  products = productRepository.findByNameContaining("shoe");
         products.forEach((p)->{
             System.out.println("Product ID: " + p.getId() + "\nProduct name: " + p.getName() +
                     "\nProduct description: " + p.getDescription() + " \nPrice: " + p.getPrice() + " \n");
