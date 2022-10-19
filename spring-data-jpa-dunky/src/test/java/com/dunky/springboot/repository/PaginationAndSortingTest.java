@@ -65,9 +65,38 @@ public class PaginationAndSortingTest {
     void sorting(){
         // Sorting implemented
         String sortBy = "price";
-        List<Product> products = productRepository.findAll(Sort.by(sortBy).descending());
+        String sortDir = "desc";
+
+        Sort sortObj = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
+                Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+
+        List<Product> sortedProducts = productRepository.findAll(sortObj);
+        sortedProducts.forEach((p) -> {
+            System.out.println("product: " + p.getName() + " -> Price: " + p.getPrice());
+        });
+    }
+
+    @Test
+    void paginationAndSorting(){
+        // Sorting implemented
+        String sortBy = "price";
+        String sortDir = "desc";
+        int pageNo = 0;
+        int pageSize = 5;
+
+        // Create sorting object
+        Sort sortObj = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
+                Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+
+        // Create pageable object
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sortObj);
+
+        Page<Product> sortedProducts = productRepository.findAll(pageable);
+
+        List<Product>  products = sortedProducts.getContent();
         products.forEach((p) -> {
             System.out.println("product: " + p.getName() + " -> Price: " + p.getPrice());
         });
+
     }
 }

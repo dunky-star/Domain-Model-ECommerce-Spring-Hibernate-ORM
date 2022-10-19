@@ -4,6 +4,9 @@ import com.dunky.springboot.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.math.BigDecimal;
@@ -80,9 +83,27 @@ class ProductRepositoryTest {
 
     @Test
     void findAllMethod(){
-        // Sorting implemented
-        String sortBy = "price";
-        List<Product> products = productRepository.findAll(Sort.by(sortBy).descending());
+        // Implementing sorting by multiple fields and pagination.
+        String sortByName = "name";
+        String sortByDesc = "description";
+        String sortDir = "desc";
+        int pageNo = 0;
+        int pageSize = 5;
+
+        Sort sortedName = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
+                Sort.by(sortByName).ascending() : Sort.by(sortByName).descending();
+
+        Sort sortedDescription = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
+                Sort.by(sortByDesc).ascending() : Sort.by(sortByDesc).descending();
+
+        Sort goupBySort = sortedName.and(sortedDescription);
+
+        // Create pageable object
+        Pageable pageableFindAll = PageRequest.of(pageNo, pageSize, goupBySort);
+
+        Page<Product> sortedProducts = productRepository.findAll(pageableFindAll);
+
+        List<Product>  products = sortedProducts.getContent();
         products.forEach((p) -> {
             System.out.println("product: " + p.getName() + " -> Price: " + p.getPrice());
         });
