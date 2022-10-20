@@ -22,7 +22,7 @@ public class OneToManyBiMappingTests {
     @Test
     void saveOrderMethod() {
         Order order = new Order();
-        order.setOrderTrackingNumber("100ABCD");
+        order.setOrderTrackingNumber("100ABCDE");
         order.setStatus("In progress");
 
         // create order item 1
@@ -31,6 +31,7 @@ public class OneToManyBiMappingTests {
         orderItem1.setQuantity(2);
         orderItem1.setPrice(orderItem1.getProduct().getPrice().multiply(new BigDecimal(2)));
         orderItem1.setImageUrl("image1.png");
+        orderItem1.setOrder(order);
         order.getOrderItems().add(orderItem1);
 
         // create order item 2
@@ -39,6 +40,7 @@ public class OneToManyBiMappingTests {
         orderItem2.setQuantity(3);
         orderItem2.setPrice(orderItem2.getProduct().getPrice().multiply(new BigDecimal(3)));
         orderItem2.setImageUrl("image2.png");
+        orderItem2.setOrder(order);
         order.getOrderItems().add(orderItem2);
 
         order.setTotalPrice(order.getTotalAmount());
@@ -49,10 +51,10 @@ public class OneToManyBiMappingTests {
         address.setStreet("Najjera I");
         address.setState("Uganda");
         address.setCountry("Uganda");
-        address.setZipCode("+256");
+        address.setZipCode("256");
 
         order.setBillingAddress(address);
-        
+        address.setOrder(order);
         orderRepository.save(order);
     }
 }
