@@ -96,10 +96,10 @@ class ProductRepositoryTest {
         Sort sortedDescription = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
                 Sort.by(sortByDesc).ascending() : Sort.by(sortByDesc).descending();
 
-        Sort goupBySort = sortedName.and(sortedDescription);
+        Sort groupBySort = sortedName.and(sortedDescription);
 
         // Create pageable object
-        Pageable pageableFindAll = PageRequest.of(pageNo, pageSize, goupBySort);
+        Pageable pageableFindAll = PageRequest.of(pageNo, pageSize, groupBySort);
 
         Page<Product> sortedProducts = productRepository.findAll(pageableFindAll);
 
