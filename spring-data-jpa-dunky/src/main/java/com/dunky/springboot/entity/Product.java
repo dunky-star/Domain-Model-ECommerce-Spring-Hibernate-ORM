@@ -46,4 +46,7 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private ProductCategory category;
 }
