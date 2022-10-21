@@ -4,6 +4,7 @@ import com.dunky.springboot.entity.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -62,11 +63,12 @@ public class OneToManyBiMappingTests {
     @Test
     void saveProductCategory(){
         ProductCategory productCategory = new ProductCategory();
-        productCategory.setCategoryName("books");
-        productCategory.setCategoryDescription("books description");
+        productCategory.setCategoryName("Books");
+        productCategory.setCategoryDescription("Books description");
 
         Product product1 = new Product();
         product1.setName("Core Java");
+        product1.setDescription("Best Core Java Book");
         product1.setPrice(new BigDecimal(1000));
         product1.setImageUrl("image_java1.png");
         product1.setSku("ABCDJava1");
@@ -76,6 +78,7 @@ public class OneToManyBiMappingTests {
 
         Product product2 = new Product();
         product2.setName("Effective Java");
+        product2.setDescription("Trending Java development topics.");
         product2.setPrice(new BigDecimal(2000));
         product2.setImageUrl("image_java2.png");
         product2.setSku("ABCDJava2");
@@ -88,8 +91,9 @@ public class OneToManyBiMappingTests {
 
 
     @Test
+    @Transactional
     void fetchProductCategory(){
-        ProductCategory category = productCategoryRepository.findById(1L).get();
-        System.out.println(category);
+        ProductCategory category = productCategoryRepository.findById(2L).get();
+        System.out.println(category.getProducts());
     }
 }
