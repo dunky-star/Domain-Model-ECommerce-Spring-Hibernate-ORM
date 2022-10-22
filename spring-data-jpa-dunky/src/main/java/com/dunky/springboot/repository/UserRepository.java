@@ -1,4 +1,7 @@
 package com.dunky.springboot.repository;
 
-public interface UserRepository {
+import com.dunky.springboot.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 }
