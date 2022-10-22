@@ -27,6 +27,7 @@ public class Order {
     private LocalDateTime dateCreated;
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
+    private Long shoppingCartId;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Address billingAddress;
