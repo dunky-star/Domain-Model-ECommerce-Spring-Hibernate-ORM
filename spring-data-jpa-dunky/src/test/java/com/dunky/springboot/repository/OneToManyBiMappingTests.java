@@ -29,7 +29,7 @@ public class OneToManyBiMappingTests {
 
         // create order item 1
         OrderItem orderItem1 = new OrderItem();
-        orderItem1.setProduct(productRepository.findById(1L).get());
+        orderItem1.setProduct(productRepository.findById(3L).get());
         orderItem1.setQuantity(2);
         orderItem1.setPrice(orderItem1.getProduct().getPrice().multiply(new BigDecimal(2)));
         orderItem1.setImageUrl("image1.png");
@@ -38,7 +38,7 @@ public class OneToManyBiMappingTests {
 
         // create order item 2
         OrderItem orderItem2 = new OrderItem();
-        orderItem2.setProduct(productRepository.findById(2L).get());
+        orderItem2.setProduct(productRepository.findById(4L).get());
         orderItem2.setQuantity(3);
         orderItem2.setPrice(orderItem2.getProduct().getPrice().multiply(new BigDecimal(3)));
         orderItem2.setImageUrl("image2.png");
