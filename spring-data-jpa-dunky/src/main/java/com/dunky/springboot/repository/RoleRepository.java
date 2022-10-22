@@ -1,2 +1,4 @@
-package com.dunky.springboot.repository;public interface RoleRepository {
+package com.dunky.springboot.repository;
+
+public interface RoleRepository {
 }

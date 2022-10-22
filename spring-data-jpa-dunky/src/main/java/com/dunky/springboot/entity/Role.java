@@ -1,2 +1,4 @@
-package com.dunky.springboot.entity;public class Role {
+package com.dunky.springboot.entity;
+
+public class Role {
 }

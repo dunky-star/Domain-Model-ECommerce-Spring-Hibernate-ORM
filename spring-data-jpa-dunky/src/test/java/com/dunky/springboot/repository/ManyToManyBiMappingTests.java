@@ -1,2 +1,4 @@
-package com.dunky.springboot.repository;public class ManyToManyBiMappingTests {
+package com.dunky.springboot.repository;
+
+public class ManyToManyBiMappingTests {
 }
