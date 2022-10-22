@@ -95,5 +95,19 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
     @Query(nativeQuery = true)
     public Product findByDescription(@Param("description") String description);
+
+    /**
+     * Implementing the search functionality in Spring Data JPA using JPQL query.
+     *
+     */
+    @Query("SELECT p FROM Product p WHERE " +
+            "p.name LIKE CONCAT('%',:query, '%')" +
+            "Or p.description LIKE CONCAT('%', :query, '%')")
+    List<Product> searchProducts(String query);
+
+    @Query(value = "SELECT * FROM products p WHERE " +
+            "p.name LIKE CONCAT('%',:query, '%')" +
+            "Or p.description LIKE CONCAT('%', :query, '%')", nativeQuery = true)
+    List<Product> searchProductsSQL(String query);
 }
 
