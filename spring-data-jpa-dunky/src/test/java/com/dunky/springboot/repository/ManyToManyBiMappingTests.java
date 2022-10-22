@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 public class ManyToManyBiMappingTests {
 
@@ -38,6 +40,15 @@ public class ManyToManyBiMappingTests {
         roleRepository.save(roleAdmin);
     }
 
-
+    @Test
+    void fetchRole(){
+        List<Role> roles = roleRepository.findAll();
+        roles.forEach((r) ->{
+            System.out.println(r.getName());
+            r.getUsers().forEach((u) ->{
+                System.out.println(u.getFirstName());
+            });
+        });
+    }
 
 }
