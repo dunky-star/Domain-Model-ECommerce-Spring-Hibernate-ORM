@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
     public OrderResponse placeOrder(OrderRequest orderRequest) {
 
         Order order = orderRequest.getOrder();
-        order.setStatus("INPROGRESS");
+        order.setStatus("IN PROGRESS");
         order.setOrderTrackingNumber(UUID.randomUUID().toString());
         orderRepository.save(order);
 
