@@ -4,6 +4,7 @@ import com.dunky.springboot.dto.OrderRequest;
 import com.dunky.springboot.dto.OrderResponse;
 import com.dunky.springboot.entity.Order;
 import com.dunky.springboot.entity.Payment;
+import com.dunky.springboot.exception.PaymentException;
 import com.dunky.springboot.repository.OrderRepository;
 import com.dunky.springboot.repository.PaymentRepository;
 import com.dunky.springboot.service.OrderService;
@@ -29,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
 
         Order order = orderRequest.getOrder();
         order.setStatus("INPROGRESS");
-        order.setOrderTackingNumber(UUID.randomUUID().toString());
+        order.setOrderTrackingNumber(UUID.randomUUID().toString());
         orderRepository.save(order);
 
         Payment payment = orderRequest.getPayment();
@@ -42,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
         paymentRepository.save(payment);
 
         OrderResponse orderResponse = new OrderResponse();
-        orderResponse.setOrderTackingNumber(order.getOrderTackingNumber());
+        orderResponse.setOrderTackingNumber(order.getOrderTrackingNumber());
         orderResponse.setStatus(order.getStatus());
         orderResponse.setMessage("SUCCESS");
         return orderResponse;
